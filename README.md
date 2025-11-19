@@ -1,8 +1,6 @@
 
   # Modernize Website Color Scheme
 
-  This is a code bundle for Modernize Website Color Scheme. The original project is available at https://www.figma.com/design/ZpituqdppTczPZBONZ6fQO/Modernize-Website-Color-Scheme.
-
   ## Running the code
 
   Run `npm i` to install the dependencies.
