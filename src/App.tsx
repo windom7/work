@@ -4,9 +4,6 @@ import imgHeroImage from "./imports/I&P Blue.png";
 
 const heroObjectPosition = "60% 50%";
 
-const HEADER_HEIGHT = 64;
-const FOOTER_HEIGHT = 56;
-
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -23,7 +20,7 @@ export default function App() {
   );
 
   return (
-    <div className="h-screen bg-[#D2B48C] text-[#1A1A1A] flex flex-col">
+    <div className="min-h-screen bg-[#D2B48C] text-[#1A1A1A] flex flex-col">
       <header className="bg-[#1A3329] shadow-lg sticky top-0 z-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -75,10 +72,10 @@ export default function App() {
       </header>
 
       <main
-        className="flex-1 overflow-hidden"
-        style={{ height: `calc(100vh - ${HEADER_HEIGHT + FOOTER_HEIGHT}px)` }}
+        className="flex-1"
+        style={{ minHeight: "calc(100vh - 64px)", maxHeight: "calc(100vh - 64px)" }}
       >
-        <div className="max-w-6xl mx-auto h-full px-4 sm:px-6 lg:px-8 py-4 grid md:grid-cols-2 gap-6 items-stretch">
+        <div className="max-w-6xl mx-auto h-full px-4 sm:px-6 lg:px-8 py-6 md:py-8 grid md:grid-cols-2 gap-8 items-stretch">
           <section
             id="hero"
             className="relative rounded-3xl overflow-hidden h-full shadow-2xl bg-[#10231c]"
@@ -95,17 +92,17 @@ export default function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-br from-[#0d1a14]/80 via-[#1A3329]/60 to-[#D4AF37]/40" />
 
-            <div className="relative h-full flex flex-col items-start justify-center px-6 sm:px-8 gap-5 text-white">
+            <div className="relative h-full flex flex-col items-start justify-center px-6 sm:px-10 gap-6 text-white">
               <p className="text-sm uppercase tracking-[0.25em] text-white/80">Caravan 1</p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight">Hero Image</h1>
-              <p className="text-base sm:text-lg text-white/85 max-w-xl">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">Hero Image</h1>
+              <p className="text-lg sm:text-xl text-white/85 max-w-xl">
                 Modernized layout with balanced spacing to keep the entire experience in view without scrolling.
               </p>
-              <div className="flex flex-wrap gap-3">
-                <button className="bg-white text-[#1A1A1A] px-6 py-3 rounded-lg hover:bg-[#D4AF37] hover:text-white transition-all duration-300 shadow-lg">
+              <div className="flex flex-wrap gap-4">
+                <button className="bg-white text-[#1A1A1A] px-7 py-3 rounded-lg hover:bg-[#D4AF37] hover:text-white transition-all duration-300 shadow-lg">
                   Login
                 </button>
-                <button className="bg-[#D4AF37] text-[#1A1A1A] px-6 py-3 rounded-lg hover:bg-[#1A3329] hover:text-white transition-all duration-300 shadow-lg">
+                <button className="bg-[#D4AF37] text-[#1A1A1A] px-7 py-3 rounded-lg hover:bg-[#1A3329] hover:text-white transition-all duration-300 shadow-lg">
                   Forgot Login
                 </button>
               </div>
@@ -114,7 +111,7 @@ export default function App() {
 
           <section
             id="news"
-            className="h-full rounded-3xl bg-white/80 backdrop-blur shadow-xl border border-white/50 p-6 flex flex-col overflow-hidden"
+            className="h-full rounded-3xl bg-white/80 backdrop-blur shadow-xl border border-white/50 p-6 flex flex-col"
             aria-label="Latest news"
           >
             <div className="flex items-center justify-between mb-4">
@@ -125,20 +122,20 @@ export default function App() {
               <div className="hidden sm:block text-xs text-[#1A1A1A]/70">All systems operational</div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 flex-1 overflow-y-auto pr-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
               {newsItems.map((item) => (
                 <article
                   key={item.id}
                   className={`${
                     item.color === "green" ? "bg-[#1A3329] text-white" : "bg-[#D4AF37] text-[#1A1A1A]"
-                  } rounded-2xl p-4 shadow-lg transition-transform duration-300 hover:-translate-y-2`}
+                  } rounded-2xl p-5 shadow-lg transition-transform duration-300 hover:-translate-y-2`}
                 >
                   <div className="flex items-center justify-between text-xs opacity-80">
                     <span>{item.category}</span>
                     <span>{new Date().getFullYear()}</span>
                   </div>
-                  <h3 className="mt-2 text-base font-semibold leading-snug">{item.title}</h3>
-                  <p className="mt-1 text-sm opacity-90">
+                  <h3 className="mt-3 text-lg font-semibold leading-snug">{item.title}</h3>
+                  <p className="mt-2 text-sm opacity-90">
                     Concise highlights keep this tile compact so the full grid remains within the visible viewport.
                   </p>
                 </article>
@@ -156,11 +153,8 @@ export default function App() {
         </div>
       </main>
 
-      <footer
-        className="bg-[#1A1A1A] text-white text-center text-sm flex items-center justify-center"
-        style={{ height: FOOTER_HEIGHT }}
-      >
-        <p className="px-4">&copy; 2025 Caravan. All rights reserved.</p>
+      <footer className="bg-[#1A1A1A] text-white py-6 text-center text-sm">
+        <p>&copy; 2025 Caravan. All rights reserved.</p>
       </footer>
     </div>
   );
